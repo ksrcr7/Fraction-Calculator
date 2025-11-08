@@ -71,4 +71,26 @@ Fraction Fraction::operator*=(const Fraction &other) {
     return *this;
 }
 
+void Fraction::ShowFraction() const {
+    std::cerr << "Numerator: "<<this->numerator<<"\n"<<this->denominator<<"\n";
+
+}
+
+Fraction operator + (Fraction s1,const Fraction& s2){
+    s1 += s2;
+    return s1;
+}
+Fraction operator - (Fraction s1,const Fraction& s2){
+    s1 -= s2;
+    return s1;
+}
+Fraction operator * (Fraction s1,const Fraction& s2){
+    s1 *= s2;
+    return s1;
+}
+Fraction operator / (Fraction s1,const Fraction& s2){
+    s1 /= s2;
+    return s1;
+}
+
 

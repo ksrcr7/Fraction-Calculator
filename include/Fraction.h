@@ -13,9 +13,10 @@ private:
 
 
 public:
-    Fraction(long long,long long);
+    explicit Fraction(long long,long long);
     [[nodiscard]] long long GetNumerator()const;
     [[nodiscard]] long long GetDenominator()const;
+    void ShowFraction()const;
     Fraction operator += (const Fraction&);
     Fraction operator -= (const Fraction&);
     Fraction operator /= (const Fraction&);
@@ -23,7 +24,12 @@ public:
 
 
 
+
 };
+Fraction operator + (Fraction,const Fraction&);
+Fraction operator - (Fraction,const Fraction&);
+Fraction operator * (Fraction,const Fraction&);
+Fraction operator / (Fraction,const Fraction&);
 
 
 
