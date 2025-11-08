@@ -42,7 +42,7 @@ long long Fraction::GetDenominator() const {
     return denominator;
 }
 
-Fraction Fraction::operator += (const Fraction &other)  {
+Fraction &Fraction::operator += (const Fraction &other)  {
     this->numerator = this->numerator * other.denominator + other.numerator * this->denominator;
     this->denominator = this->denominator * other.denominator;
     normalize();
@@ -50,21 +50,21 @@ Fraction Fraction::operator += (const Fraction &other)  {
 
 }
 
-Fraction Fraction::operator-=(const Fraction &other) {
+Fraction &Fraction::operator-=(const Fraction &other) {
     this->numerator = this->numerator * other.denominator - other.numerator * this->denominator;
     this->denominator = this->denominator * other.denominator;
     normalize();
     return *this;
 }
 
-Fraction Fraction::operator/=(const Fraction &other) {
+Fraction &Fraction::operator/=(const Fraction &other) {
     this->numerator = this->numerator * other.denominator;
     this->denominator = this->denominator * other.numerator;
     normalize();
     return *this;
 }
 
-Fraction Fraction::operator*=(const Fraction &other) {
+Fraction &Fraction::operator*=(const Fraction &other) {
     this->numerator = this->numerator * other.numerator;
     this->denominator = this->denominator * other.denominator;
     normalize();
@@ -74,6 +74,11 @@ Fraction Fraction::operator*=(const Fraction &other) {
 void Fraction::ShowFraction() const {
     std::cerr << "Numerator: "<<this->numerator<<"\n"<<this->denominator<<"\n";
 
+}
+
+Fraction::Fraction(long long int s) {
+    numerator = s;
+    denominator = 1;
 }
 
 Fraction operator + (Fraction s1,const Fraction& s2){
@@ -91,6 +96,51 @@ Fraction operator * (Fraction s1,const Fraction& s2){
 Fraction operator / (Fraction s1,const Fraction& s2){
     s1 /= s2;
     return s1;
+}
+
+bool operator == (const Fraction& s1,const Fraction&s2){
+    return ((s1.GetNumerator() == s2.GetNumerator()) &&
+                (s1.GetDenominator() == s2.GetDenominator()));
+
+
+
+}
+bool operator != (const Fraction& s1,const Fraction& s2){
+    return (s1.GetNumerator() != s2.GetNumerator()
+    || s1.GetDenominator() != s2.GetDenominator());
+
+
+}
+
+bool operator >= (const Fraction& s1,const Fraction& s2){
+    long long an = s1.GetNumerator();
+    long long ad = s1.GetDenominator();
+    long long bn = s2.GetNumerator();
+    long long bd = s2.GetDenominator();
+
+    long long t1 = bd / std::gcd(std::llabs(an), std::llabs(bd));
+    long long t2 = ad / std::gcd(std::llabs(bn), std::llabs(ad));
+
+    __int128 left  = (__int128)an * t1;
+    __int128 right = (__int128)bn * t2;
+
+    return left >= right;
+
+
+}
+bool operator <= (const Fraction& s1,const Fraction& s2){
+    long long an = s1.GetNumerator();
+    long long ad = s1.GetDenominator();
+    long long bn = s2.GetNumerator();
+    long long bd = s2.GetDenominator();
+
+    long long t1 = bd / std::gcd(std::llabs(an), std::llabs(bd));
+    long long t2 = ad / std::gcd(std::llabs(bn), std::llabs(ad));
+
+    __int128 left  = (__int128)an * t1;
+    __int128 right = (__int128)bn * t2;
+
+    return left <= right;
 }
 
 
