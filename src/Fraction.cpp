@@ -34,4 +34,41 @@ void Fraction::normalize() {
 
 }
 
+long long Fraction::GetNumerator() const {
+    return numerator;
+}
+
+long long Fraction::GetDenominator() const {
+    return denominator;
+}
+
+Fraction Fraction::operator += (const Fraction &other)  {
+    this->numerator = this->numerator * other.denominator + other.numerator * this->denominator;
+    this->denominator = this->denominator * other.denominator;
+    normalize();
+    return *this;
+
+}
+
+Fraction Fraction::operator-=(const Fraction &other) {
+    this->numerator = this->numerator * other.denominator - other.numerator * this->denominator;
+    this->denominator = this->denominator * other.denominator;
+    normalize();
+    return *this;
+}
+
+Fraction Fraction::operator/=(const Fraction &other) {
+    this->numerator = this->numerator * other.denominator;
+    this->denominator = this->denominator * other.numerator;
+    normalize();
+    return *this;
+}
+
+Fraction Fraction::operator*=(const Fraction &other) {
+    this->numerator = this->numerator * other.numerator;
+    this->denominator = this->denominator * other.denominator;
+    normalize();
+    return *this;
+}
+
 

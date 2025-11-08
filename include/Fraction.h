@@ -14,6 +14,13 @@ private:
 
 public:
     Fraction(long long,long long);
+    [[nodiscard]] long long GetNumerator()const;
+    [[nodiscard]] long long GetDenominator()const;
+    Fraction operator += (const Fraction&);
+    Fraction operator -= (const Fraction&);
+    Fraction operator /= (const Fraction&);
+    Fraction operator *= (const Fraction&);
+
 
 
 };
