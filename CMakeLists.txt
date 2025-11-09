@@ -6,7 +6,16 @@ add_executable(Fraction_Calculator
         src/main.cpp
         src/Fraction.cpp
         include/Fraction.h
+
 )
+
+add_executable(
+        Fraction_CLI
+        apps/Fraction_CLI.cpp
+        src/Fraction.cpp
+)
+
+target_include_directories(Fraction_CLI PRIVATE ${CMAKE_SOURCE_DIR}/include)
 
 target_include_directories(Fraction_Calculator PRIVATE
         ${CMAKE_CURRENT_SOURCE_DIR}/include
