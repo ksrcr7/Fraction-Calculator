@@ -3,7 +3,14 @@
 #ifndef FRACTION_CALCULATOR_FRACTION_H
 #define FRACTION_CALCULATOR_FRACTION_H
 
+
+
+
+
+
+
 #include <iostream>
+#include <fstream>
 
 
 class Fraction{
@@ -31,6 +38,7 @@ public:
 
 
 
+
 };
 Fraction operator + (Fraction,const Fraction&);
 Fraction operator - (Fraction,const Fraction&);
@@ -41,6 +49,12 @@ bool operator == (const Fraction&,const Fraction&);
 bool operator != (const Fraction&,const Fraction&);
 bool operator >= (const Fraction&,const Fraction&);
 bool operator <= (const Fraction&,const Fraction&);
+
+std::ostream& operator << (std::ostream& , const Fraction&);
+std::istream& operator >> (std::istream & ,Fraction&);
+
+
+
 
 
 

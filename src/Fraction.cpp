@@ -154,4 +154,62 @@ bool operator <= (const Fraction& s1,const Fraction& s2){
     return left <= right;
 }
 
+std::ostream& operator << (std::ostream& output, const Fraction& F1){
+
+    if(F1.GetDenominator() == 1){
+        output<<F1.GetNumerator();
+    }
+    else{
+        output<<F1.GetNumerator()<<"/"<<F1.GetDenominator();
+    }
+    return output;
+
+}
+std::istream& operator >> (std::istream& is, Fraction& f){
+
+    Fraction backup = f;
+
+    long long n = 0, d = 1;
+
+    is >> std::ws;
+    if (!(is >> n)) {
+        is.setstate(std::ios::failbit);
+        return is;
+    }
+
+    is >> std::ws;
+    char ch;
+    if (is.get(ch)) {
+        if (ch == '/') {
+            if (!(is >> d)) {
+                is.setstate(std::ios::failbit);
+                f = backup;
+                return is;
+            }
+        } else {
+            is.unget();
+            d = 1;
+        }
+    } else {
+
+        is.clear(is.rdstate() & ~std::ios::failbit);
+        d = 1;
+    }
+
+    if (d == 0) {
+        is.setstate(std::ios::failbit);
+        f = backup;
+        return is;
+    }
+
+    f = Fraction(n, d);
+    return is;
+
+
+}
+
+
+
+
+
 
