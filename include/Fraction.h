@@ -23,6 +23,8 @@ public:
     Fraction& operator -= (const Fraction&);
     Fraction& operator /= (const Fraction&);
     Fraction& operator *= (const Fraction&);
+    Fraction operator + ()const;
+    Fraction operator - ()const;
 
 
 

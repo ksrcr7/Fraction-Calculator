@@ -81,6 +81,17 @@ Fraction::Fraction(long long int s) {
     denominator = 1;
 }
 
+Fraction Fraction::operator+() const {
+    Fraction result = *this;
+    return result;
+}
+
+Fraction Fraction::operator-() const {
+    Fraction result = *this;
+    result.numerator = -result.numerator;
+    return result;
+}
+
 Fraction operator + (Fraction s1,const Fraction& s2){
     s1 += s2;
     return s1;
