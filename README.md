@@ -75,7 +75,7 @@ cl /std:c++17 /O2 Fraction.cpp main.cpp /Fe:tests_basic.exe
 ▶️ Run Examples (PowerShell)
 Interactive Mode
 -------------------
-./Fraction_CLI
+./Fraction_CLI.exe
 
 Example session:
 Enter your Expression. (e.g. 3/4 + 2/5). Type 'exit' to quit.
